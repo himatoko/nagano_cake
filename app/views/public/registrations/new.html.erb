@@ -1,65 +1,66 @@
-<h2>新規会員登録</h2>
+<div class="container">
+  <div class="row d-flex flex-column">
+    <h4 class="col justify-content-center my-5 mx-3">新規会員登録</h4>
+      
+      <%= form_with model: @customer, url: customer_registration_path do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+        <div class="form-inline row mx-5 mb-2">
+          <%= f.label :last_name, "名前", class: "col-2" %><br />
+          <%= f.label :last_name, "（姓）", class: "col-2" %><br />
+          <%= f.text_field :last_name, class: "col-3 form-control" %>
+          <%= f.label :first_name, "（名）", class: "col-2" %><br />
+          <%= f.text_field :first_name, class: "col-3 form-control" %>
+        </div>
 
-<%= form_with model: @customer, url: customer_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+        <div class="form-inline row mx-5 mb-2">
+          <%= f.label :last_name_kana, "フリガナ", class: "col-2" %><br />
+          <%= f.label :last_name_kana, "（セイ）", class: "col-2" %><br />
+          <%= f.text_field :last_name_kana, class: "col-3 form-control" %>
+          <%= f.label :first_name_kana, "（メイ）", class: "col-2" %><br />
+          <%= f.text_field :first_name_kana, class: "col-3 form-control" %>
+        </div>
 
-  <p>名前</p>
-  <div class="field">
-    <%= f.label :last_name, "（姓）" %><br />
-    <%= f.text_field :last_name %>
-  </div>
- 
-  <div class="field">
-    <%= f.label :first_name, "（名）" %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  
-  <p>フリガナ</p>
-  <div class="field">
-    <%= f.label :last_name_kana, "（セイ）" %><br />
-    <%= f.text_field :last_name_kana %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :first_name_kana, "（メイ）" %><br />
-    <%= f.text_field :first_name_kana %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :postal_code, "郵便番号（ハイフンなし）" %><br />
-    <%= f.text_field :postal_code %>
-  </div>  
-  
-  <div class="field">
-    <%= f.label :address, "住所" %><br />
-    <%= f.text_field :address %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :telephone_number, "電話番号（ハイフンなし）" %><br />
-    <%= f.text_field :telephone_number %>
-  </div>
+        <div class="form-inline row mx-5 mb-2">
+          <%= f.label :email, "メールアドレス", class: "col-4" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-4 form-control" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password, "パスワード（6文字以上）" %>
-    <% if @minimum_password_length %>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+        <div class="form-inline row mx-5 mb-2">
+          <%= f.label :postal_code, "郵便番号（ハイフンなし）", class: "col-4" %><br />
+          <%= f.text_field :postal_code, class: "col-4 form-control" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード（確認用）" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <div class="form-inline row mx-5 mb-2">
+            <%= f.label :address, "住所", class: "col-4" %><br />
+            <%= f.text_field :address, class: "col-8 form-control" %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
+        <div class="form-inline row mx-5 mb-2">
+            <%= f.label :telephone_number, "電話番号（ハイフンなし）", class: "col-4" %><br />
+            <%= f.text_field :telephone_number, class: "col-4 form-control" %>
+          </div>
 
-<%= render "public/shared/links" %>
+        <div class="form-inline row mx-5 mb-2">
+            <%= f.label :password, "パスワード（6文字以上）", class: "col-4" %>
+            <% if @minimum_password_length %>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "col-4 form-control" %>
+          </div>
+
+        <div class="form-inline row mx-5 mb-3">
+            <%= f.label :password_confirmation, "パスワード（確認用）", class: "col-4" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-4 form-control" %>
+          </div>
+
+        <div class="form-inline row mx-5 mb-4">
+          <%= f.submit "新規登録", class: "btn btn-success col-3 offset-4" %>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="col justify-content-center mb-5 mx-2">
+      <h4>既に登録済みの方</h4>
+      <p><%= link_to "こちら", new_customer_session_path %>からログインしてください。</p>
+    </div>
+  </div>
+</div>
