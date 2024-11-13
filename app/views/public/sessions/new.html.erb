@@ -1,23 +1,28 @@
-<h2>ログイン</h2>
+<div class="container">
+  <div class="row d-flex flex-column">
+    <h4 class="col justify-content-center my-5 mx-3">ログイン</h4>
+    <div class="col justify-content-center mb-3 mx-5">
+      <h4>会員の方はこちらからログイン</h4>
 
-<h2>会員の方はこちらからログイン</h2>
-
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_with model: @customer, url: customer_session_path do |f| %>
+      <div class="form-inline row mx-5 mb-2">
+        <%= f.label :email, "メールアドレス", class: "col-3" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-4 form-control" %>
+      </div>
+    
+      <div class="form-inline row mx-5 mb-5">
+        <%= f.label :password, "パスワード", class: "col-3" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "col-4 form-control" %>
+      </div>
+    
+      <div class="form-inline row mx-5 mb-5">
+        <%= f.submit "ログイン", class: "btn btn-primary col-2 offset-3" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    
+    <div class="col justify-content-center mb-5 mx-5">
+    <h4>会員登録がお済みでない方</h4>
+    <p class="offset-2"><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
   </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
-<h2>会員登録がお済みでない方</h2>
-<p>こちらから新規登録を行ってください。</p>
-<%= render "public/shared/links" %>
+</div>
